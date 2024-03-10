@@ -39,10 +39,6 @@ console.log('top rated err',err);
     })
   }
 
-  function handleClick() {
-    setShowLayer(!showLayer);
-    console.log(); // Toggle showLayer state
-  }
   function showDetails(id){
     movieDetails(id)
     clicked(id)
