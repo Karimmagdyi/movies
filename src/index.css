@@ -1,13 +1,115 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
+
+
+body {
+position: relative; 
+background-image: url(../src/images/slider-bg2.jpg);
+}
+.layer{
+  position: absolute;
+  /* background-repeat: no-repeat; */
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 20px;
+  /* background-color:#30353C; */
+  /* z-index: 99; */
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.star{
+  color: yellow;
+
+}
+.layer-visible {
+  display: block;
+  /* Add other styles for visibility, z-index, etc. */
+}
+.desc{
+  background-color: #1A1A1A;
+}
+.mt{
+  margin-top: 17px;
+}
+.watch{
+  background-color: #30353C;
+}
+.closeIcon{
+  position: absolute;
+  top: 80px;
+  right: 35px;
+}
+.details-img{
+  position: relative;
+}
+/* .desc-title{
+  position: absolute;
+  bottom: 85%;
+  left: 32%;
+} */
+/* .information{
+  position: absolute;
+  bottom: 83.5%;
+  left: 30%;
+} */
+.pt-6{
+  padding-top: 100px;
+}
+.desc p{
+  font-size: 12px;
+}
+.main-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #dc3545;
+  color: white;
+  cursor: pointer;
+}
+.active{
+color: #0DCAE8!important;
+}
+@media screen and (max-width:576px) {
+  .content{
+    width: 100% !important;
+    margin-left: 0px !important;
+    padding-inline: 220px;
+    /* flex-direction: unset; */
+    
+  }
+  .desc-title{
+    max-lines: 3;
+  }
+  .desc{
+   font-size: 14;
+   word-wrap: break-word;
+  }
+  .information{
+    /* width: 100%; */
+    
+  }
+  .content img{
+    width: 400px;
+  }
+}
+.desc{
+  
+}
+
+.searchLayer{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  z-index: 99999;
+}
+/* .layerss{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  z-index: 999999999;
+} */
