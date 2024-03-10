@@ -1,3 +1,4 @@
+import { click } from '@testing-library/user-event/dist/click'
 import axios from 'axios'
 import { useFormik } from 'formik'
 import React, { useState } from 'react'
@@ -108,8 +109,11 @@ console.log('search err',err);
 
 
 :<nav className="navbar navbar-dark bg-dark fixed-top">
-  <div className="container-fluid">
-    <Link className="navbar-brand" to={'/Home'}>Offcanvas dark navbar</Link>
+  <div className="container">
+    <Link className="navbar-brand" to={'/Home'} style={{color:'red'}}>Movlify</Link>
+    <div className='ms-auto px-4'>
+    <span><i role='button' onClick={searchClicked} className="fa-solid fa-magnifying-glass fa-lg text-white "></i></span>
+    </div>
     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
     </button>
@@ -117,7 +121,7 @@ console.log('search err',err);
       <div className="offcanvas-header d-flex">
         <NavLink role='button' className="offcanvas-title text-decoration-none" onClick={closeClick} id="offcanvasDarkNavbarLabel">Movies</NavLink>
         <div className='ms-auto'>
-        <NavLink role='button' onClick={closeClick} className="mt-2 text-decoration-none">Actors</NavLink>
+        <NavLink role='button' onClick={clicked} className="mt-2 text-decoration-none">Actors</NavLink>
         </div>
         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" />
       </div>
