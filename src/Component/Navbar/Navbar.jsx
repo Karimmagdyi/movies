@@ -61,6 +61,7 @@ console.log('search err',err);
     
 <div className="movie">
 <img className='w-100' height={250} src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path || movies.poster_path}`} alt="" />
+<h4 className='text-white'>{movies.title}</h4>
 </div>
 </div>
 </div>)}
@@ -86,7 +87,7 @@ console.log('search err',err);
         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" />
       </div>
       <div className="offcanvas-body">
-        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3" data-bs-dismiss="offcanvas" aria-label="Close">
           <li className="nav-item">
             <NavLink className="nav-link" aria-current="page" to={'/comedy'}>comedy</NavLink>
           </li>
@@ -108,7 +109,7 @@ console.log('search err',err);
 </nav>     
 
 
-:<nav className="navbar navbar-dark bg-dark fixed-top">
+:<nav className="navbar navbar-dark  fixed-top">
   <div className="container">
     <Link className="navbar-brand" to={'/Home'} style={{color:'red'}}>Movlify</Link>
     <div className='ms-auto px-4'>
@@ -126,7 +127,7 @@ console.log('search err',err);
         <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" />
       </div>
       <div className="offcanvas-body">
-        <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul  className="navbar-nav justify-content-end flex-grow-1 pe-3"  data-bs-dismiss="offcanvas" aria-label="Close">
           <li className="nav-item">
             <NavLink className="nav-link" aria-current="page" to={'/PopularActors'}>Most Popular Actors</NavLink>
           </li>

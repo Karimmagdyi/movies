@@ -9,7 +9,7 @@ export default function Documentaries() {
     const [layer, setLayer] = useState(false)
 
 
-    const{details,similar,movieDetails,provider}=useContext(myApiContext)
+    const{details,similar,movieDetails,provider,getCast,cast}=useContext(myApiContext)
 
 function closeLayer(){
   setLayer(false);
@@ -43,28 +43,48 @@ console.log('docume',err);
         function showDetails(id){
             movieDetails(id)
             clicked(id)
+            getCast(id)
           }
   return <>
   
   
   {layer===true?<div className='layer pt-5'>
-    <div style={{marginLeft:"380px"}} className="d-flex justify-content-center flex-column align-items-center content bg-black w-50"><img className='details-img' width={"600px"} src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path}`}alt="" />
-    <h2 className='desc-title text-white '>{details.title}</h2>
-    <div className='d-flex information text-white' > 
-    <span className='ms-4' >{details.release_date}</span>
-    <span className='ms-4'>{details.runtime} min</span>
-    <span className='ms-4'><i className="fa-solid fa-star star"></i> {details.vote_average}</span>
-    </div>
-    <a href={provider.US?.link}>
-    <button className='btn btn-outline-danger mt-3'>watch</button>
-    </a>
-    <div className="desc text-white mt-5 bg-transparent ps-4">{details.overview}</div>
-    <div className="row justify-content-center mt-5 gy-4">
-      {similar.map((similar,idx)=> <div key={idx} className=' col-sm-5 '>
-        <img onClick={()=>{showDetails(similar.id)}}  width={"250px"} src={`https://image.tmdb.org/t/p/w500/${similar.poster_path || similar.poster_path}}`}alt="" />
-        <h6 className='text-white'> {similar.title}</h6>
-         </div>)}
-    </div>
+   
+  <div className=' bg-black mx-auto contentt'>
+      <div className='d-flex align-items-center flex-column'>
+    <img className='details-img w-100'  src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path||details.poster_path}`}alt="" />
+<h2 className='desc-title text-white '>{details.title}</h2>
+<div className='d-flex information text-white' > 
+<span className='ms-4' >{details.release_date}</span>
+<span className='ms-4'>{details.runtime} min</span>
+<span className='ms-4'><i className="fa-solid fa-star star"></i> {details.vote_average}</span>
+</div>
+      <a href={provider.US?.link}>
+<button className='btn btn-outline-danger mt-3'>watch</button>
+</a>
+      </div>
+      
+      <div className="desc text-white mt-5 bg-transparent ps-4">{details.overview}</div>
+      
+      <div className='row'>
+      {cast.map((cast,ind)=><div key={ind} className='col-4 col-md-2'>
+        <Link className='text-decoration-none' to={`/ActorsDetails/${cast.id}${cast.profile_path}`}>
+        <div className='cast pt-5'>
+ <img className='w-100' src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} alt="" />
+ <h6 className='text-white'>{cast.original_name}</h6>
+ {/* <h6 className='text-white'>{cast.character}</h6> */}
+</div>
+        </Link>
+</div>)}
+      </div>
+<div className="row justify-content-center mt-5 gy-4">
+  {similar.map((similar,idx)=> <div key={idx} className=' col-6 col-sm-5 '>
+    <img onClick={()=>{showDetails(similar.id)}}  className='w-100' src={`https://image.tmdb.org/t/p/w500/${similar.poster_path || similar.poster_path}}`}alt="" />
+    <h6 className='text-white'> {similar.title}</h6>
+     </div>)}
+   
+</div>
+
     </div>
     
     
@@ -105,3 +125,45 @@ console.log('docume',err);
   
   </>
 }
+
+
+
+
+
+
+
+
+
+
+// cast     
+
+// {cast.map((cast,ind)=><div key={ind} className='col-4 col-md-2'>
+// <div className='cast d-flex flex-row'>
+//  <img className='w-100' src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} alt="" />
+//  <h4>{cast.original_name}</h4>
+//  <h4>{cast.character}</h4>
+// </div>
+// </div>)}
+
+
+
+
+// { <div style={{marginLeft:"380px"}} className="d-flex justify-content-center flex-column align-items-center content bg-black w-50"><img className='details-img' width={"600px"} src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path}`}alt="" />
+// <h2 className='desc-title text-white '>{details.title}</h2>
+// <div className='d-flex information text-white' > 
+// <span className='ms-4' >{details.release_date}</span>
+// <span className='ms-4'>{details.runtime} min</span>
+// <span className='ms-4'><i className="fa-solid fa-star star"></i> {details.vote_average}</span>
+// </div>
+// <a href={provider.US?.link}>
+// <button className='btn btn-outline-danger mt-3'>watch</button>
+// </a>
+// <div className="desc text-white mt-5 bg-transparent ps-4">{details.overview}</div>
+// <div className="row justify-content-center mt-5 gy-4">
+//   {similar.map((similar,idx)=> <div key={idx} className=' col-sm-5 '>
+//     <img onClick={()=>{showDetails(similar.id)}}  width={"250px"} src={`https://image.tmdb.org/t/p/w500/${similar.poster_path || similar.poster_path}}`}alt="" />
+//     <h6 className='text-white'> {similar.title}</h6>
+//      </div>)}
+   
+// </div>
+// </div> }

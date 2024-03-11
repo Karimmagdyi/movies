@@ -21,6 +21,7 @@ import Comedyy from './Component/ComedyList/Comedyy';
 import PopularMovies from './Component/PopularMovies/PopularMovies';
 import PopularActors from './Component/PopularActors/PopularActors';
 import ActorsDetails from './Component/ActorsDetails/ActorsDetails';
+import Video from './Component/Video/Video';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       {path:'PopularActors',element:<PopularActors/>},
       {path:'ActorsDetails/:id/:actorpath',element:<ActorsDetails/>},
       {path:'home',element:<Home/>},
+      {path:'Video',element:<Video/>},
       {path:'TopSearches',element:<TopSearches/>},
       {path:'DocumentaryList',element:<DocumentaryList/>},
       {path:'Documentary2',element:<DocumentaryLists/>},
