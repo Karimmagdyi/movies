@@ -12,7 +12,7 @@ export default function Crimes() {
   const [layer, setLayer] = useState(false)
 
 
-  const{details,similar,movieDetails,provider,getCast,cast}=useContext(myApiContext)
+  const{details,similar,movieDetails,provider,getCast,cast,getVideo,video}=useContext(myApiContext)
 
 function closeLayer(){
 setLayer(false);
@@ -26,6 +26,7 @@ console.log('id',id);
     movieDetails(id)
     clicked(id)
     getCast(id)
+    getVideo(id)
   }
     function crimeMovies(){
       axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=3&sort_by=popularity.desc&with_genres=80`,{
@@ -46,8 +47,7 @@ setCrime(res.data.results)
   {layer===true?<div className='layer pt-5'>
   <div className=' bg-black mx-auto contentt'>
       <div className='d-flex align-items-center flex-column'>
-    <img className='details-img w-100'  src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path||details.poster_path}`}alt="" />
-<h2 className='desc-title text-white '>{details.title}</h2>
+      <iframe height={400} className='w-100' src={`https://www.youtube-nocookie.com/embed/${video?.key }`} frameborder="0"></iframe><h2 className='desc-title text-white '>{details.title}</h2>
 <div className='d-flex information text-white' > 
 <span className='ms-4' >{details.release_date}</span>
 <span className='ms-4'>{details.runtime} min</span>
@@ -64,7 +64,7 @@ setCrime(res.data.results)
       {cast.map((cast,ind)=><div key={ind} className='col-4 col-md-2'>
         <Link className='text-decoration-none' to={`/ActorsDetails/${cast.id}${cast.profile_path}`}>
         <div className='cast pt-5'>
- <img className='w-100' src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`} alt="" />
+ <img className='w-100' src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`} alt="" />
  <h6 className='text-white'>{cast.original_name}</h6>
  {/* <h6 className='text-white'>{cast.character}</h6> */}
 </div>
@@ -73,7 +73,7 @@ setCrime(res.data.results)
       </div>
 <div className="row justify-content-center mt-5 gy-4">
   {similar.map((similar,idx)=> <div key={idx} className=' col-6 col-sm-5 '>
-    <img onClick={()=>{showDetails(similar.id)}}  className='w-100' src={`https://image.tmdb.org/t/p/w500/${similar.poster_path || similar.poster_path}}`}alt="" />
+    <img onClick={()=>{showDetails(similar.id)}}  className='w-100' src={`https://image.tmdb.org/t/p/original/${similar.poster_path || similar.poster_path}}`}alt="" />
     <h6 className='text-white'> {similar.title}</h6>
      </div>)}
    
@@ -90,7 +90,7 @@ setCrime(res.data.results)
         {crime.map((movies,index)=> <div  key={index} className= 'col-6 col-md-3 '>
            {/* <Link to={`MovieDetails/${movies.id}`}> */}
            <div onClick={()=>{showDetails(movies.id)}} className=' '>
-           <img className="w-100 " height={230} src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path || movies.poster_path}`} alt={movies.title} />
+           <img className="w-100 " height={230} src={`https://image.tmdb.org/t/p/original/${movies.backdrop_path || movies.poster_path}`} alt={movies.title} />
               <h5 className='text-center text-white card-title text-decoration-none list-unstyled'>{movies.title}</h5>
            </div>
            {/* </Link> */}

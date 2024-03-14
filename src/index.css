@@ -4,6 +4,7 @@
 body {
 position: relative; 
 background-image: url(../src/images/slider-bg2.jpg);
+overflow-x: hidden;
 }
 .layer{
   position: absolute;
@@ -106,4 +107,16 @@ color: #0DCAE8!important;
 .contentt{
   width: 50% ;
 }
+}
+
+.zz{
+    position: absolute;
+    top: 70px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+
+}
+.logo{
+  font-size: 30px !important;
 }

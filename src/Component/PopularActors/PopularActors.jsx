@@ -37,7 +37,7 @@ console.log('actors err',err);
     {actor.map((actor,index)=><div key={index} className="col-6 col-md-3">
         <Link className='text-decoration-none' to={`/ActorsDetails/${actor.id}${actor.profile_path}`}>
         <div className="card ">
-       <img className='card-img-top ' height={300} src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt="" />
+       <img className='card-img-top ' height={300} src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`} alt="" />
         <div className="card-body pt-3 bg-black">
     <h5 className='text-white'>{actor.name}</h5>
 

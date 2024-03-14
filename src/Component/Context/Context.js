@@ -96,13 +96,7 @@ export function ApiContext({ children }) {
 
       })
   }
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNWQxMWYxZDc3MGVjNGZhNWQ4YzEzNDBkZmRmYWIwNiIsInN1YiI6IjY1ZTUxZDA5Yzk5ODI2MDE0ODYwYzE1NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GJ3ylpHKNniknE-IEWZE2pRvClWaYwfBnJcomaZ9r0I'
-    }
-  };
+
 
   function getCast(id) {
     axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`, {
@@ -120,12 +114,30 @@ console.log('cast err',err);
     })
   }
 
+  const [video, setVideo] = useState(null)
+
+        function getVideo(id){
+            axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,{
+                headers: {
+                    accept: 'application/json',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNWQxMWYxZDc3MGVjNGZhNWQ4YzEzNDBkZmRmYWIwNiIsInN1YiI6IjY1ZTUxZDA5Yzk5ODI2MDE0ODYwYzE1NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GJ3ylpHKNniknE-IEWZE2pRvClWaYwfBnJcomaZ9r0I'
+                  }
+            })
+            .then((res)=>{
+console.log('video',res.data.results[0]);
+setVideo(res.data.results[0])
+            })
+            .catch((err)=>{
+console.log('err video',err);
+            })
+        }
+
   useEffect(()=>{
     getCast()
   },[])
   return <>
 
-    <myApiContext.Provider value={{ details, similar, similarMovies, movieDetails, provider, getActorBiography, biography, actorMovies, credit, actor ,getCast,cast}}>
+    <myApiContext.Provider value={{getVideo,video, details, similar, similarMovies, movieDetails, provider, getActorBiography, biography, actorMovies, credit, actor ,getCast,cast}}>
       {children}
     </myApiContext.Provider>
   </>

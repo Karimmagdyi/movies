@@ -71,7 +71,7 @@ console.log('search err',err);
 
   </div>:<>{otherNav===false?<nav className="navbar navbar-dark fixed-top">
   <div className="container">
-    <Link className="navbar-brand" to={'/Home'}style={{color:'red'}} >Movlify</Link>
+    <Link className="navbar-brand fw-bolder logo" to={'/Home'}style={{color:'red'}} >Movlify</Link>
     <div className='ms-auto px-4'>
     <span><i role='button' onClick={searchClicked} className="fa-solid fa-magnifying-glass fa-lg text-white "></i></span>
     </div>
@@ -111,7 +111,7 @@ console.log('search err',err);
 
 :<nav className="navbar navbar-dark  fixed-top">
   <div className="container">
-    <Link className="navbar-brand" to={'/Home'} style={{color:'red'}}>Movlify</Link>
+    <Link className="navbar-brand fw-bolder logo" to={'/Home'} style={{color:'red'}}>Movlify</Link>
     <div className='ms-auto px-4'>
     <span><i role='button' onClick={searchClicked} className="fa-solid fa-magnifying-glass fa-lg text-white "></i></span>
     </div>

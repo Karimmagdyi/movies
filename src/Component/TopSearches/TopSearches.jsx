@@ -11,7 +11,7 @@ useEffect(()=>{
   topRatedMovies()
 },[])
 const [topRated, setTopRated] = useState([])
-const{details,similar,movieDetails,provider,cast,getCast}=useContext(myApiContext)
+const{details,similar,movieDetails,provider,cast,getCast,getVideo,video}=useContext(myApiContext)
 
 
 function closeLayer(){
@@ -43,6 +43,7 @@ console.log('top rated err',err);
     movieDetails(id)
     clicked(id)
     getCast(id)
+    getVideo(id)
     // handleClick()
   }
 
@@ -88,8 +89,7 @@ console.log('top rated err',err);
   {layer===true?<div className='layer'>
   <div className=' bg-black mx-auto contentt'>
       <div className='d-flex align-items-center flex-column'>
-    <img className='details-img w-100'  src={`https://image.tmdb.org/t/p/w500/${details.backdrop_path||details.poster_path}`}alt="" />
-<h2 className='desc-title text-white '>{details.title}</h2>
+      <iframe height={400} className='w-100' src={`https://www.youtube-nocookie.com/embed/${video?.key }`} frameborder="0"></iframe><h2 className='desc-title text-white '>{details.title}</h2>
 <div className='d-flex information text-white' > 
 <span className='ms-4' >{details.release_date}</span>
 <span className='ms-4'>{details.runtime} min</span>
@@ -131,7 +131,7 @@ console.log('top rated err',err);
         {topRated.map((movies,index)=> <div  key={index} className='col-md-4 px-2 mb-3'>
            {/* <Link to={`MovieDetails/${movies.id}`}> */}
            <div onClick={()=>{showDetails(movies.id)}} className=' '>
-           <img className="w-100 " height={230} src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path || movies.poster_path}`} alt={movies.title} />
+           <img className="w-100 rounded-3" height={230} src={`https://image.tmdb.org/t/p/w500/${movies.backdrop_path || movies.poster_path}`} alt={movies.title} />
               <h5 className='text-center text-white card-title text-decoration-none list-unstyled'>{movies.title}</h5>
            </div>
            {/* </Link> */}
